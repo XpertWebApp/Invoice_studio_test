@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-fraunces), ui-serif, Georgia, serif;
+}
+
+@theme {
+  /* One accent: deep teal (teal-700), with a darker hover and a soft tint. */
+  --color-accent: #0f766e;
+  --color-accent-strong: #115e59;
+  --color-accent-soft: #f0fdfa;
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  background: #f5f5f4;
+  color: #1c1917;
+  font-family: var(--font-sans);
+}
+
+/* A printed page resting on a desk: layered, soft, never heavy. */
+.sheet-shadow {
+  box-shadow:
+    0 1px 2px rgb(28 25 23 / 0.08),
+    0 4px 8px -2px rgb(28 25 23 / 0.06),
+    0 18px 40px -12px rgb(28 25 23 / 0.18);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 14mm;
+}
+
+@media print {
+  html,
+  body {
+    background: #fff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  html,
+  body {
+    min-height: 0 !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .studio-root {
+    min-height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Everything except the sheet disappears. */
+  .app-chrome {
+    display: none !important;
+  }
+
+  /* The preview prints even when the Edit tab is active on mobile. */
+  .studio-grid {
+    display: block !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .preview-pane {
+    display: block !important;
+    position: static !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: none !important;
+    border: 0 !important;
+    max-height: none !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  .invoice-sheet {
+    box-shadow: none !important;
+    max-width: none !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: #fff !important;
+    aspect-ratio: auto !important;
+    min-height: 0 !important;
+  }
+
+  .invoice-sheet tr,
+  .invoice-sheet .avoid-break {
+    break-inside: avoid;
+  }
+}
